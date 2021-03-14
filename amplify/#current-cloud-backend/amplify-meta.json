@@ -1,0 +1,105 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-unicornflix-dev-62607-authRole",
+      "UnauthRoleArn": "arn:aws:iam::566529043853:role/amplify-unicornflix-dev-62607-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::566529043853:role/amplify-unicornflix-dev-62607-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-unicornflix-dev-62607-deployment",
+      "UnauthRoleName": "amplify-unicornflix-dev-62607-unauthRole",
+      "StackName": "amplify-unicornflix-dev-62607",
+      "StackId": "arn:aws:cloudformation:us-west-2:566529043853:stack/amplify-unicornflix-dev-62607/2af8c120-848e-11eb-80af-06daf168ddd3",
+      "AmplifyAppId": "d3b34s3jul875d"
+    }
+  },
+  "auth": {
+    "unicornflix398e817b": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-unicornflix-dev-62607-deployment/amplify-cfn-templates/auth/unicornflix398e817b-cloudformation-template.yml",
+        "logicalId": "authunicornflix398e817b"
+      },
+      "lastPushTimeStamp": "2021-03-14T06:53:38.483Z",
+      "output": {
+        "UserPoolId": "us-west-2_lOyCkJKH1",
+        "AppClientIDWeb": "bv9vk0kjp8ptqbcf59u1n7raq",
+        "AppClientID": "2srfd7o3hu6qfr0r1sm7a13r8b",
+        "IdentityPoolId": "us-west-2:0c065da2-f6f1-4533-9310-9913aed34a7b",
+        "IdentityPoolName": "unicornflix398e817b_identitypool_398e817b__dev",
+        "UserPoolName": "unicornflix398e817b_userpool_398e817b"
+      },
+      "lastPushDirHash": "9J49VKmlXaOCI7Hz34mplMKu9dQ="
+    },
+    "userPoolGroups": {
+      "service": "Cognito-UserPool-Groups",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "unicornflix398e817b",
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb",
+            "AppClientID",
+            "IdentityPoolId"
+          ]
+        }
+      ],
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-unicornflix-dev-62607-deployment/amplify-cfn-templates/auth/template.json",
+        "logicalId": "authuserPoolGroups"
+      },
+      "lastPushTimeStamp": "2021-03-14T06:53:38.483Z",
+      "output": {
+        "AdminGroupRole": "arn:aws:iam::566529043853:role/us-west-2_lOyCkJKH1-AdminGroupRole"
+      },
+      "lastPushDirHash": "Q/vlo7FXa4GgYa6/i9+pg8GTbUU="
+    }
+  },
+  "api": {
+    "unicornflix": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authunicornflix398e817b"
+            }
+          },
+          "additionalAuthenticationProviders": []
+        },
+        "GraphQLAPIIdOutput": "y2rfl6rxarfrxbk77vnb3hsi5a",
+        "GraphQLAPIEndpointOutput": "https://24n5qr7ksnabdmkzh5tvgpbwku.appsync-api.us-west-2.amazonaws.com/graphql"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-unicornflix-dev-62607-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apiunicornflix"
+      },
+      "lastPushTimeStamp": "2021-03-14T06:53:38.483Z",
+      "lastPushDirHash": "Jwyy4A8YxI1jBbErTgD3JY3OoG8="
+    }
+  },
+  "video": {
+    "unicornflix": {
+      "service": "video",
+      "serviceType": "video-on-demand",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-unicornflix-dev-62607-deployment/amplify-cfn-templates/video/unicornflix-vod-workflow-template.yaml",
+        "logicalId": "videounicornflix"
+      },
+      "lastPushTimeStamp": "2021-03-14T06:53:38.483Z",
+      "output": {
+        "oVodOutputUrl": "unicornflix-dev-output-noynyk11.s3.us-west-2.amazonaws.com",
+        "oVODOutputS3": "unicornflix-dev-output-noynyk11",
+        "oVODInputS3": "unicornflix-dev-input-noynyk11"
+      },
+      "lastPushDirHash": "UTjrNBukA/iCPx0pZ+vr6QbkYIM="
+    }
+  }
+}
